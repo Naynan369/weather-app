@@ -10,11 +10,11 @@ searchBox.addEventListener('click', () => {
     const city = document.querySelector('.search-box input').value;
 
 
-    if(city === '')
+    if (city === '')
         return;
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city} & units = metric&appid=${APIKey}`).then(Response => Response.json()).then(json =>{
-        if(json.code === '404'){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city} & units = metric&appid=${APIKey}`).then(Response => Response.json()).then(json => {
+        if (json.code === '404') {
             container.style.height = '400px';
             weather.style.display = 'none';
             weatherDetails.style.display = 'none';
@@ -24,7 +24,7 @@ searchBox.addEventListener('click', () => {
         }
 
         errorFound.style.display = 'none';
-        errorFound.classList.remove ('fadeIn')
+        errorFound.classList.remove('fadeIn')
 
 
         const image = document.querySelector('.weather img')
@@ -33,21 +33,21 @@ searchBox.addEventListener('click', () => {
         const humidity = document.querySelector('.weather-details .humidity span')
         const wind = document.querySelector('.weather-details .wind span')
 
-        switch (json.weather[0].main){
+        switch (json.weather[0].main) {
             case 'Clear':
-                image.src = '../public/images/clear.png'
+                image.src = '../assets/clear.png'
                 break;
             case 'Rain':
-                image.src = '../public/images/rain.png'
+                image.src = '../assets/rain.png'
                 break;
             case 'Snow':
-                image.src = '../public/images/snow.png'
+                image.src = '../assets/snow.png'
                 break;
             case 'Clouds':
-                image.src = '../public/images/cloud.png'
+                image.src = '../assets/cloud.png'
                 break;
             case 'Mist':
-                image.src = '../public/images/mist.png'
+                image.src = '../assets/mist.png'
                 break;
 
             default:
